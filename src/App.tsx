@@ -59,9 +59,7 @@ function App() {
       <hr />
       <div>
         <div ref={jssRef}></div>
-        <div>Add Column</div>
       </div>
-      <div>Add Row</div>
     </div>
   )
 }
