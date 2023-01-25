@@ -107,7 +107,7 @@ function App() {
     console.log('jssRef.current => ', jssRef.current);
     // jssRef.current.setReadOnlyCell(0, 0, true);
   }
-
+  
   jspreadsheet.setExtensions({ validations, render });
 
   const handleChangeValues = (worksheet: any, cell: any, col: any, row: any, value: any) => {
@@ -121,6 +121,34 @@ function App() {
       ...allData.slice(editedSheetDataIndex + 1)
     ];
     setAllData(newArr);
+  }
+
+  let options: any = {
+    tabs: true,
+    worksheets: [{
+      worksheetName: 'Sales',
+      minDimensions: [dimensions.cols, dimensions.rows],
+      data: [
+        ['2023-01-23', 0, 20, 0, 0, 0, 0, 0, 0],
+        ['2023-01-23', 0, 300, 310, 100, 50, 20, 30, 0],
+        ['2023-01-24', 0, 300, 310, 100, 50, 20, 30, 0]
+      ],
+      columns: [
+        { type: "calendar", title: "Date" },
+        { type: "numeric", title: "Total Sales" },
+        { type: "numeric", title: "Food", },
+        { type: "numeric", title: "Liquor", },
+        { type: "numeric", title: "Beer", },
+        { type: "numeric", title: "Wine", },
+        { type: "numeric", title: "N/A Bev", },
+        { type: "numeric", title: "MDSE", },
+        { type: "numeric", title: "GIFT CERT", },
+      ]
+    }, {
+      worksheetName: 'Comps',
+      minDimensions: [dimensions.cols, dimensions.rows],
+      data: [[100, 200], [10, 20, 30]]
+    }]
   }
 
   useEffect(() => {
@@ -145,7 +173,7 @@ function App() {
         license: 'Njg1YTU0ZTYwNDk1YmI5ZWViNWNiYmJhZWMwNjRlM2RiODA1Y2YwZTYzMGJjNjllZWFjODhjYjNmMzIyZWVlMjRmNzhmNzVkMmRlZWMzMDMyMTczMWQyODA1ZmIzYzM2ZWExYWVhOGUwYzUzMTVkNjI3MmJjMDVlMjA2OWVhNTMsZXlKdVlXMWxJam9pVTJoaGMyaGhibXNnVUdGdVkyaGhiQ0lzSW1SaGRHVWlPakUyTnpjeU9ETXlNREFzSW1SdmJXRnBiaUk2V3lKemNISmxZV1J6YUdWbGRDMTNhWFJvTFhKbFlXTjBMWFI1Y0dWelkzSnBjSFF1ZG1WeVkyVnNMbUZ3Y0NJc0lteHZZMkZzYUc5emRDSmRMQ0p3YkdGdUlqb3dMQ0p6WTI5d1pTSTZXeUoyTnlJc0luWTRJaXdpZGpraUxDSm1iM0p0ZFd4aElpd2labTl5YlhNaUxDSnlaVzVrWlhJaUxDSndZWEp6WlhJaUxDSnBiWEJ2Y25SbGNpSXNJblpoYkdsa1lYUnBiMjV6SWl3aVkyOXRiV1Z1ZEhNaUxDSnpaV0Z5WTJnaUxDSmphR0Z5ZEhNaVhYMD0=',
       });
     }
-  }, []);
+  }, [options]);
 
   return (
     <div className="App">
