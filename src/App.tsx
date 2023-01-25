@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import reactLogo from './assets/react.svg'
 import jspreadsheet from "jspreadsheet";
 import { render } from "@jspreadsheet/render";
+import validations from "@jspreadsheet/validations";
 import './App.css';
 import "jspreadsheet/dist/jspreadsheet.css";
 import "jsuites/dist/jsuites.css";
