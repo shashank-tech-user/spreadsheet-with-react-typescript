@@ -1,8 +1,7 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import reactLogo from './assets/react.svg'
 import jspreadsheet from "jspreadsheet";
 import { render } from "@jspreadsheet/render";
-import validations from "@jspreadsheet/validations";
 import './App.css';
 import "jspreadsheet/dist/jspreadsheet.css";
 import "jsuites/dist/jsuites.css";
@@ -94,7 +93,6 @@ function App() {
     ]
   }, {
     worksheetName: 'Comps',
-    worksheetState: 'hidden',
     minDimensions: [dimensions.cols, dimensions.rows],
     data: [[90, 60, 80, '=SUM(A1:C1,Sales!B1)'], [800, 900, 7800, '=SUM(A2:C2,Sales!B2)']]
   }]
