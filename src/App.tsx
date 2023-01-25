@@ -107,8 +107,8 @@ function App() {
     console.log('jssRef.current => ', jssRef.current);
     // jssRef.current.setReadOnlyCell(0, 0, true);
   }
-  
-  jspreadsheet.setExtensions({ validations, render });
+
+  jspreadsheet.setExtensions({ render });
 
   const handleChangeValues = (worksheet: any, cell: any, col: any, row: any, value: any) => {
     let sheetName = worksheet.getWorksheetName();
@@ -166,14 +166,6 @@ function App() {
           setReadOnlyCell();
         },
         worksheets: allData,
-        validations: [{
-          range: 'Sales!C1:C6',
-          action: "warning",
-          criteria: ">=",
-          type: "number",
-          allowBlank: false,
-          value: [0],
-        }],
         onchange: handleChangeValues,
         oncomments: function () {
           console.log('oncomments', arguments);
