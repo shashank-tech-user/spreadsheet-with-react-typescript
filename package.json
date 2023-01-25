@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@jspreadsheet/render": "^2.0.5",
+    "@jspreadsheet/validations": "^1.4.7",
     "jspreadsheet": "^9.3.6",
     "jsuites": "^5.0.1",
     "react": "^18.2.0",
