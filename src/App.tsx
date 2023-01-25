@@ -107,7 +107,7 @@ function App() {
     console.log('jssRef.current => ', jssRef.current);
     // jssRef.current.setReadOnlyCell(0, 0, true);
   }
-  
+
   jspreadsheet.setExtensions({ validations, render });
 
   const handleChangeValues = (worksheet: any, cell: any, col: any, row: any, value: any) => {
