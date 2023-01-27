@@ -61,7 +61,11 @@ button:focus-visible {
 }
 
 .jtabs-headers-container {
-  max-width: 800px !important;
+  /* max-width: 100% !important; */
+}
+
+.jss.jss_overflow{
+  /* width: 100% !important; */
 }
 
 @media (prefers-color-scheme: light) {
