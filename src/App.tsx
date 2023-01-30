@@ -1,11 +1,10 @@
 import { useEffect, useRef, useState } from "react";
-import reactLogo from './assets/react.svg'
 import jspreadsheet from "jspreadsheet";
 import { render } from "@jspreadsheet/render";
-import './App.css';
+import { ColsIndex, data, HeadingColumnIndex, RowsIndex } from "./constant";
 import "jspreadsheet/dist/jspreadsheet.css";
 import "jsuites/dist/jsuites.css";
-import { ColsIndex, data, RowsIndex } from "./constant";
+import './App.css';
 
 // https://jspreadsheet.com/v9/docs/cells
 
@@ -37,9 +36,18 @@ function App() {
   }
 
   const handleReadOnlyCells = (worksheet: any, cell: any, col: any, row: any, value: any) => {
-    if (RowsIndex.includes(row) && ColsIndex.includes(col))
-      cell.classList.add('readonly');
+    // console.log('worksheet => ', worksheet.getWorksheetId())
+    if (worksheet.getWorksheetName() === 'SALES') {
+      if (HeadingColumnIndex.includes(col) && row === 0) {
+        cell.classList.add('readonly');
+        return;
+      }
 
+      if (RowsIndex.includes(row) && ColsIndex.includes(col)) {
+        cell.classList.add('readonly');
+        return;
+      }
+    }
   }
 
   useEffect(() => {
@@ -63,16 +71,19 @@ function App() {
         },
         license: 'Njg1YTU0ZTYwNDk1YmI5ZWViNWNiYmJhZWMwNjRlM2RiODA1Y2YwZTYzMGJjNjllZWFjODhjYjNmMzIyZWVlMjRmNzhmNzVkMmRlZWMzMDMyMTczMWQyODA1ZmIzYzM2ZWExYWVhOGUwYzUzMTVkNjI3MmJjMDVlMjA2OWVhNTMsZXlKdVlXMWxJam9pVTJoaGMyaGhibXNnVUdGdVkyaGhiQ0lzSW1SaGRHVWlPakUyTnpjeU9ETXlNREFzSW1SdmJXRnBiaUk2V3lKemNISmxZV1J6YUdWbGRDMTNhWFJvTFhKbFlXTjBMWFI1Y0dWelkzSnBjSFF1ZG1WeVkyVnNMbUZ3Y0NJc0lteHZZMkZzYUc5emRDSmRMQ0p3YkdGdUlqb3dMQ0p6WTI5d1pTSTZXeUoyTnlJc0luWTRJaXdpZGpraUxDSm1iM0p0ZFd4aElpd2labTl5YlhNaUxDSnlaVzVrWlhJaUxDSndZWEp6WlhJaUxDSnBiWEJ2Y25SbGNpSXNJblpoYkdsa1lYUnBiMjV6SWl3aVkyOXRiV1Z1ZEhNaUxDSnpaV0Z5WTJnaUxDSmphR0Z5ZEhNaVhYMD0=',
       });
+      spreadsheet.current.map((current: any, index: number) => current.element.classList.add(`spreadsheet_${index + 1}`));
     }
-  }, [allData]);
+  }, [allData, spreadsheet]);
 
   return (
     <div className="App">
       <h3>The BrassTap</h3>
       <hr />
-      <div>
-        <div ref={jssRef} />
-      </div>
+      <section className="main-section">
+        <div className="section">
+          <div ref={jssRef} />
+        </div>
+      </section>
     </div>
   )
 }

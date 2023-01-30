@@ -56,16 +56,60 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+.main-section {
+  display: flex;
+  justify-content: center;
+}
+
+.section {
+  width: 1051px;
+  min-width: 1000px;
+  overflow-x: auto;
+  position: relative;
+}
+
+.section div.jtabs-headers-container {
+  position: fixed;
+  width: 100%;
+  max-width: 800px !important;
+}
+
+.section .jtabs-content {
+  margin-top: 40px;
+}
+
 .jcontextmenu > div::before {
   content: '';
 }
 
-.jtabs-headers-container {
-  /* max-width: 100% !important; */
+.spreadsheet_1 td[data-y="8"],
+.spreadsheet_1 td[data-y="16"],
+.spreadsheet_1 td[data-y="24"],
+.spreadsheet_1 td[data-y="32"],
+.spreadsheet_1 td[data-y="36"] { 
+  background-color: #FABF8E;
+  color: #000 !important; 
 }
 
-.jss.jss_overflow{
-  /* width: 100% !important; */
+.spreadsheet_1 tr:first-child td[data-x="1"]{
+  background:transparent !important;
+  color: #000 !important;
+}
+.spreadsheet_1 td[data-x="1"]:not(:first-child) {
+  background-color: #FABF8E;
+  color: #000 !important; 
+  font-weight: 700;
+}
+.spreadsheet_1 tr:last-child td[data-x="1"] {
+  background-color: #244162; 
+  color: #fff;
+  font-weight: normal;
+}
+
+.spreadsheet_1 td[data-y="37"] {
+  background-color: #244162; 
+  font-weight: 900;
+  color: #fff !important; 
 }
 
 @media (prefers-color-scheme: light) {
