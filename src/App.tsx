@@ -5,10 +5,12 @@ import { ColsIndex, data, HeadingColumnIndex, RowsIndex } from "./constant";
 import "jspreadsheet/dist/jspreadsheet.css";
 import "jsuites/dist/jsuites.css";
 import './App.css';
+import { useReadonlyHooks } from "./useReadonlyHook";
 
 // https://jspreadsheet.com/v9/docs/cells
 
 function App() {
+  const { readonlySales, readonlyComps } = useReadonlyHooks();
   const jssRef: any = useRef(null);
   const spreadsheet: any = useRef(null);
   const [dimensions, setDimenstions] = useState({
@@ -18,11 +20,11 @@ function App() {
   const [allData, setAllData] = useState<any[]>(data);
   jspreadsheet.setLicense(
     'YjdkYTU5OWUxOGM2MzU4MTkyZmE3N2NiZTE5ZjRkMDAxNGZjMWI5Nzg4NWM2NjdlY2U5NmI5Y2I2OTc1YzE5YjM5NzQ1MjkyYzFmODE0MzczNjY4NmQxYjc5M2U3ZjE5NDhjMTlkMDViYTAyMWI2MjAzNmQ2OTM1MmE0YzlhYjEsZXlKdVlXMWxJam9pVTJoaGMyaGhibXNnVUdGdVkyaGhiQ0lzSW1SaGRHVWlPakUyTnpjeE9UWTRNREFzSW1SdmJXRnBiaUk2V3lJaUxDSnNiMk5oYkdodmMzUWlYU3dpY0d4aGJpSTZNQ3dpYzJOdmNHVWlPbHNpZGpjaUxDSjJPQ0lzSW5ZNUlsMTk='
-  )
+  );
 
   jspreadsheet.setExtensions({ render });
 
-  const handleChangeValues = (worksheet: any, cell: any, col: any, row: any, value: any) => {
+  const handleChangeValues = (worksheet: any, cell: any, col: string | number, row: string | number, value: any) => {
     let sheetName = worksheet.getWorksheetName();
     const editedSheetDataIndex = allData.findIndex((data: any) => data.worksheetName.toUpperCase() === sheetName);
     const editedSheetData = allData.find((data: any) => data.worksheetName.toUpperCase() === sheetName);
@@ -35,24 +37,22 @@ function App() {
     setAllData(newArr);
   }
 
-  const handleReadOnlyCells = (worksheet: any, cell: any, col: any, row: any, value: any) => {
-    // console.log('worksheet => ', worksheet.getWorksheetId())
-    if (worksheet.getWorksheetName() === 'SALES') {
-      if (HeadingColumnIndex.includes(col) && row === 0) {
-        cell.classList.add('readonly');
-        return;
-      }
-
-      if (RowsIndex.includes(row) && ColsIndex.includes(col)) {
-        cell.classList.add('readonly');
-        return;
-      }
-    }
+  const handleReadOnlyCells = (
+    worksheet: { getWorksheetName: () => string; },
+    cell: { classList: { add: (arg0: string) => void; }; },
+    col: number,
+    row: number
+  ) => {
+    readonlySales(worksheet, cell, col, row);
+    readonlyComps(worksheet, cell, col, row);
   }
+
+  console.log('allData', new Date("2023-01-01").getMonth() === new Date().getMonth())
 
   useEffect(() => {
     if (!jssRef.current.jspreadsheet) {
       spreadsheet.current = jspreadsheet(jssRef.current, {
+        // cloud: 'ee173c56-485c-4adb-950c-3854fc7ded55',
         allowMoveWorksheet: false,
         allowDeleteWorksheet: false,
         allowRenameWorksheet: false,
@@ -77,8 +77,9 @@ function App() {
 
   return (
     <div className="App">
-      <h3>The BrassTap</h3>
-      <hr />
+      <div className="header-title-div">
+        <h3 className="header-title-h3">The BrassTap</h3>
+      </div>
       <section className="main-section">
         <div className="section">
           <div ref={jssRef} />

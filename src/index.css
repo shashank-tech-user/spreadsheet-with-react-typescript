@@ -15,6 +15,10 @@
   -webkit-text-size-adjust: 100%;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 a {
   font-weight: 500;
   color: #646cff;
@@ -56,26 +60,51 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+.header-title-div {
+  box-sizing: border-box;
+  padding: 1.5rem;
+  background: lightblue;
+  position: sticky;
+  top: 0;
+  z-index: 9;
+}
+
+.header-title-h3 {
+  display: block;
+    margin: 0;
+}
+
 .main-section {
+  margin: 0 15px;
   display: flex;
   justify-content: center;
 }
 
-.section {
+.section div.jtabs {
   width: 1051px;
   min-width: 1000px;
-  overflow-x: auto;
-  position: relative;
 }
 
 .section div.jtabs-headers-container {
-  position: fixed;
+  position: sticky;
+  top: 72px;
+  z-index: 10;
+  background: #ffffff;
+  padding: 10px 0;
   width: 100%;
-  max-width: 800px !important;
+  max-width: 100% !important;
 }
 
 .section .jtabs-content {
-  margin-top: 40px;
+  margin-top: 0px;
+  overflow-x: auto;
+  position: relative;
+  border: 1px solid #000;
+}
+
+.section .jss_content,
+.section .jss.jss_overflow {
+  width: 100%
 }
 
 .jcontextmenu > div::before {
@@ -93,8 +122,9 @@ button:focus-visible {
   border: 1px solid #000;
 }
 
-.spreadsheet_1 tr:first-child td[data-x="1"] { 
-  background: #fff !important;
+.spreadsheet_1 tr:first-child td[data-x="1"],
+.spreadsheet_1 tr:first-child td { 
+  background: #f3f3f3 !important;
   color: #000 !important;
   font-weight: normal;
 }
@@ -105,13 +135,17 @@ button:focus-visible {
   font-weight: 600;
 }
 
-.spreadsheet_2 tr td[data-y="0"],
-.spreadsheet_2 tr td[data-y="1"] { 
+.spreadsheet_2 tr td[data-y="0"].readonly,
+.spreadsheet_2 tr td[data-y="1"].readonly { 
+  background: #f3f3f3 !important;
   color: #0724ee !important;
   font-weight: 700;
 }
 
-.spreadsheet_2 td[data-y="9"] {
+.spreadsheet_2 td[data-y="9"],
+.spreadsheet_2 td[data-y="17"],
+.spreadsheet_2 td[data-y="25"],
+.spreadsheet_2 td[data-y="33"] {
   background-color: #FABF8E;
   color: #000 !important; 
   font-weight: 600;
@@ -120,7 +154,7 @@ button:focus-visible {
 
 .spreadsheet_2 tr:first-child td[data-x="1"],
 .spreadsheet_2 tr:nth-child(2) td[data-x="1"] { 
-  background:#fff !important;
+  background:#f3f3f3 !important;
   color: #000 !important;
   font-weight: normal;
 }
