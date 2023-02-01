@@ -1,0 +1,22 @@
+{
+  "data": [
+    {
+      "worksheetName": "Sales",
+      "minDimensions": [
+        10,
+        2
+      ],
+      "freezeRows": 1,
+      "data": []
+    },
+    {
+      "worksheetName": "Comps",
+      "minDimensions": [
+        10,
+        2
+      ],
+      "freezeRows": 1,
+      "data": []
+    }
+  ]
+}

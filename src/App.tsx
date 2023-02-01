@@ -12,7 +12,7 @@ function App() {
   const jssRef: any = useRef(null);
   const spreadsheet: any = useRef(null);
   const [dimensions, setDimenstions] = useState({
-    rows: 2,
+    rows: 50,
     cols: 10
   })
   const [allData, setAllData] = useState<any[]>(data);

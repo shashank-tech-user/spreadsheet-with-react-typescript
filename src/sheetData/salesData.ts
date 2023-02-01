@@ -52,8 +52,7 @@ export const SalesSheetColumn = [
   {
     type: "number",
     locale: locale,
-    options: currencyMast,
-    readOnly: true
+    options: currencyMast
   },
   {
     type: "number",

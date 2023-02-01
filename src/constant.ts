@@ -14,7 +14,7 @@ export const HeadingColumnIndex = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 export const data = [{
   worksheetName: 'Sales',
-  minDimensions: [10, 2],
+  minDimensions: [10, 50],
   freezeRows: 1,
   style: SalesSheetCellStyle,
   // locked: true,
@@ -22,7 +22,7 @@ export const data = [{
   columns: SalesSheetColumn
 }, {
   worksheetName: 'Comps',
-  minDimensions: [10, 2],
+  minDimensions: [10, 50],
   data: CompsSheetData,
   freezeColumns: 3,
   // data: [[90, 60, 80, '=SUM(A1:C1,Sales!B1)'], [800, 900, 7800, '=SUM(A2:C2,Sales!B2)']],
