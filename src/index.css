@@ -60,13 +60,35 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+.connecting-div {
+  display: flex;
+  justify-content: center;
+}
+
+.connecting-message {
+  width: 150px;
+  padding: 10px;
+  margin-top: 15px;
+  background-color: #dfa44140;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.connecting-message:hover {
+  background-color: #dfa44178;
+}
+
+.spreadsheet-app {
+  position: sticky;
+  top: 0;
+  z-index: 9;
+}
+
 .header-title-div {
   box-sizing: border-box;
   padding: 1.5rem;
   background: lightblue;
-  position: sticky;
-  top: 0;
-  z-index: 9;
 }
 
 .header-title-h3 {

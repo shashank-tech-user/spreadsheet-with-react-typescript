@@ -22,7 +22,7 @@ export const data = [{
   style: SalesSheetCellStyle,
   data: SalesSheetData,
   columns: SalesSheetColumn,
-  locked: new Date("2023-01-01").getMonth() !== new Date().getMonth(),
+  // locked: new Date("2023-01-01").getMonth() !== new Date().getMonth(),
 }, {
   worksheetName: 'Comps',
   minDimensions: [10, 40],
